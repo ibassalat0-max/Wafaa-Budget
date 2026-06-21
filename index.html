@@ -6,22 +6,22 @@
 <title>حاسبة ميزانية المقترح - مؤسسة وافا للتنمية وبناء القدرات</title>
 <style>
 :root{
-  --bg:#f0f2f5;--surface:#fff;--surface2:#f8f9fa;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
-  --text:#111827;--text2:#4b5563;--text3:#9ca3af;
-  --blue:#1a56db;--blue-light:#eff6ff;--blue-mid:#dbeafe;
-  --green:#15803d;--green-light:#f0fdf4;--green-mid:#dcfce7;
-  --amber:#92400e;--amber-light:#fffbeb;--amber-mid:#fef3c7;
-  --red:#991b1b;--red-light:#fef2f2;--red-mid:#fee2e2;
-  --purple:#5b21b6;--purple-light:#f5f3ff;--purple-mid:#ede9fe;
-  --radius:12px;--radius-sm:8px;
-  --shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.05);
+  --bg:#f4f1fb;--bg2:#e9e3f6;--surface:#fff;--surface2:#faf7fe;
+  --border:rgba(76,29,149,0.10);--border2:rgba(76,29,149,0.18);
+  --text:#1e1b2e;--text2:#574f6b;--text3:#9b95ad;
+  --blue:#2563eb;--blue-light:#eef4ff;--blue-mid:#d8e4fe;
+  --green:#15803d;--green-light:#effdf4;--green-mid:#d6f7e0;
+  --amber:#b45309;--amber-light:#fff8ed;--amber-mid:#fdeccb;
+  --red:#b91c1c;--red-light:#fef2f2;--red-mid:#fde0e0;
+  --purple:#6d28d9;--purple-light:#f3eefd;--purple-mid:#e7dbfb;
+  --radius:14px;--radius-sm:9px;
+  --shadow:0 1px 3px rgba(76,29,149,0.08),0 1px 2px rgba(76,29,149,0.05);
+  --shadow-md:0 8px 24px rgba(76,29,149,0.13),0 2px 6px rgba(76,29,149,0.06);
 }
 [data-theme="dark"]{
-  --bg:#0f1117;--surface:#1a1d24;--surface2:#22252f;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
-  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --bg:#14121f;--bg2:#0e0c17;--surface:#1d1a2e;--surface2:#272338;
+  --border:rgba(167,139,250,0.12);--border2:rgba(167,139,250,0.22);
+  --text:#f2eefb;--text2:#a79fc2;--text3:#726a8e;
   --blue:#60a5fa;--blue-light:#1e3a5f;--blue-mid:#1e40af;
   --green:#4ade80;--green-light:#14532d;--green-mid:#166534;
   --amber:#fbbf24;--amber-light:#451a03;--amber-mid:#78350f;
@@ -29,7 +29,7 @@
   --purple:#a78bfa;--purple-light:#2e1065;--purple-mid:#4c1d95;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:calc(34px + 1.25rem) 1rem 4rem;transition:background .2s,color .2s}
+body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:radial-gradient(1100px 420px at 50% -140px,rgba(124,58,237,.14),transparent 70%),linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);background-attachment:fixed;color:var(--text);min-height:100vh;padding:calc(34px + 1.25rem) 1rem 4rem;transition:color .2s}
 .page{max-width:1050px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
 
 /* Custom title bar */
@@ -45,13 +45,21 @@ body.has-titlebar .titlebar{display:flex}
 /* Page tabs */
 .ptabs{display:flex;gap:.35rem;background:var(--surface);padding:5px;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
 .ptab{flex:1;padding:10px 14px;border-radius:var(--radius-sm);border:none;background:transparent;color:var(--text2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
-.ptab.active{background:var(--purple);color:#fff;box-shadow:var(--shadow)}
+.ptab.active{background:linear-gradient(120deg,#6d28d9,#7c3aed);color:#fff;box-shadow:0 4px 12px rgba(109,40,217,.32)}
 .ptab:not(.active):hover{background:var(--surface2)}
 .tab-panel{display:none;flex-direction:column;gap:1rem}
 .tab-panel.active{display:flex}
 
 /* Header */
-.app-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:1.15rem 1.5rem;background:linear-gradient(120deg,#6d28d9 0%,#4f46e5 52%,#7c3aed 100%);border:none;border-radius:var(--radius);box-shadow:0 10px 28px rgba(76,29,149,.28);position:relative;overflow:hidden}
+.app-header::after{content:"";position:absolute;inset:0;background:radial-gradient(420px 160px at 88% -40%,rgba(255,255,255,.18),transparent 60%);pointer-events:none}
+.app-header>*{position:relative;z-index:1}
+.app-header .app-title{color:#fff}
+.app-header .app-sub{color:rgba(255,255,255,.82)}
+.app-header .app-icon{background:rgba(255,255,255,.96)!important;padding:4px!important;border-radius:11px!important;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.app-header .org-chip{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.28)}
+.app-header .theme-btn{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.3)}
+.app-header .theme-btn:hover{background:rgba(255,255,255,.3)}
 .header-left{display:flex;align-items:center;gap:12px}
 .app-icon{width:44px;height:44px;border-radius:var(--radius-sm);background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .app-title{font-size:16px;font-weight:700}
@@ -223,6 +231,27 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 .empty-saves{text-align:center;color:var(--text3);font-size:12px;padding:1.5rem}
 #toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border2);color:var(--text);padding:.7rem 1.4rem;border-radius:var(--radius-sm);font-size:13px;font-weight:600;box-shadow:var(--shadow-md);z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
 
+/* Numeric typography — tabular figures so digits line up in columns */
+.budget-value,.budget-input,.sum-val,.rev-res-val,.rate-input,.td-input,
+.cell-nis,.cell-usd,.cell-kwd,.cell-dim,table td,.totals-row td{
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"lnum" 1}
+
+/* Grand total — the hero output of the whole calculator */
+.totals-row td{background:var(--purple-light);font-weight:800;
+  border-top:2px solid var(--purple)!important;font-size:14px;padding:13px 8px}
+.totals-row td:first-child{color:var(--purple);letter-spacing:.01em}
+.totals-row .cell-nis,.totals-row .cell-usd,.totals-row .cell-kwd{
+  font-size:18px;letter-spacing:-.01em}
+
+/* Inline line-icons (replace the emoji) */
+.ico{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:middle}
+.section-title .ico{width:17px;height:17px;color:var(--purple)}
+.add-item-btn .ico{width:15px;height:15px}
+
+/* Calm placeholder for not-yet-computed values */
+.muted-dash{color:var(--text3);font-weight:400;opacity:.5}
+
 /* Print */
 @media print{
   .app-header .header-right,.actions-bar,.add-item-btn,.rm-btn,.theme-btn{display:none!important}
@@ -233,6 +262,22 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 </style>
 </head>
 <body>
+
+<!-- Line-icon sprite (referenced via <use>) -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><rect x="7" y="5" width="10" height="3.5" rx="1"/><line x1="8" y1="13" x2="8" y2="13"/><line x1="12" y1="13" x2="12" y2="13"/><line x1="16" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="8" y2="17"/><line x1="12" y1="17" x2="12" y2="17"/><line x1="16" y1="17" x2="16" y2="17"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-sheet" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></symbol>
+  <symbol id="i-printer" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+</svg>
 
 <!-- Custom title bar (Electron only) -->
 <div class="titlebar">
@@ -259,15 +304,15 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
       <span id="dirtyDot" title="تغييرات غير محفوظة" style="display:none;width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px var(--amber-light)"></span>
       <span class="org-chip" title="Wafaa microfinance and capacity building">🌿 مؤسسة وافا للتنمية وبناء القدرات</span>
       <button class="theme-btn" onclick="showAbout()" title="حول التطبيق">ℹ️</button>
-      <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+      <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="تبديل الوضع الليلي">🌙</button>
     </div>
   </div>
 
   <!-- Page tabs -->
   <div class="ptabs">
-    <button class="ptab active" id="ptab-calc" onclick="switchPageTab('calc')">📊 الحاسبة</button>
-    <button class="ptab" id="ptab-reverse" onclick="switchPageTab('reverse')">🔄 الحاسبة العكسية</button>
-    <button class="ptab" id="ptab-saves" onclick="switchPageTab('saves')">💾 المحفوظات</button>
+    <button class="ptab active" id="ptab-calc" onclick="switchPageTab('calc')"><svg class="ico"><use href="#i-calc"/></svg> الحاسبة</button>
+    <button class="ptab" id="ptab-reverse" onclick="switchPageTab('reverse')"><svg class="ico"><use href="#i-repeat"/></svg> الحاسبة العكسية</button>
+    <button class="ptab" id="ptab-saves" onclick="switchPageTab('saves')"><svg class="ico"><use href="#i-save"/></svg> المحفوظات</button>
   </div>
 
   <!-- TAB: Calculator -->
@@ -275,7 +320,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 
   <!-- Rates -->
   <div class="card">
-    <div class="section-title">⚙️ إعدادات الأسعار والنسب</div>
+    <div class="section-title"><svg class="ico"><use href="#i-settings"/></svg> إعدادات الأسعار والنسب</div>
     <div class="rates-grid">
 
       <div class="rate-block">
@@ -380,7 +425,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 
   <!-- Budget -->
   <div class="card">
-    <div class="section-title">💰 الميزانية الكلية للمقترح</div>
+    <div class="section-title"><svg class="ico"><use href="#i-card"/></svg> الميزانية الكلية للمقترح</div>
     <div class="budget-bar">
       <div class="budget-box input-box">
         <div class="budget-label">أدخل الميزانية ▼</div>
@@ -410,7 +455,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 
   <!-- Items -->
   <div class="card">
-    <div class="section-title">📋 بنود الميزانية</div>
+    <div class="section-title"><svg class="ico"><use href="#i-list"/></svg> بنود الميزانية</div>
     <div class="calc-tab-bar">
       <button class="calc-tab active" id="tab-per-item" onclick="setCalcMode('per-item')">📦 Admin% لكل بند</button>
       <button class="calc-tab" id="tab-on-total" onclick="setCalcMode('on-total')">📊 Admin% على المجموع الكلي</button>
@@ -425,7 +470,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
         <tfoot id="itemsFoot"></tfoot>
       </table>
     </div>
-    <button class="add-item-btn" onclick="addItem()">＋ إضافة بند</button>
+    <button class="add-item-btn" onclick="addItem()"><svg class="ico"><use href="#i-plus"/></svg> إضافة بند</button>
 
     <!-- Budget usage -->
     <div class="usage-bar-wrap" id="usageWrap" style="display:none">
@@ -446,7 +491,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
   <!-- TAB: Reverse -->
   <div class="tab-panel" id="cp-reverse">
   <div class="card">
-    <div class="section-title">🔄 حاسبة عكسية — من الميزانية إلى السعر</div>
+    <div class="section-title"><svg class="ico"><use href="#i-repeat"/></svg> حاسبة عكسية — من الميزانية إلى السعر</div>
     <div class="notice notice-purple" style="margin-bottom:.85rem">
       💡 عندك ميزانية محددة لبند معين؟ أدخل المبلغ بالدينار والكمية، وستعرف أقصى سعر وحدة مسموح به بالشيكل (قبل Admin%).
     </div>
@@ -513,11 +558,11 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
   <!-- TAB: Saves -->
   <div class="tab-panel" id="cp-saves">
   <div class="card">
-    <div class="section-title">💾 حفظ وتحميل الميزانيات</div>
+    <div class="section-title"><svg class="ico"><use href="#i-save"/></svg> حفظ وتحميل الميزانيات</div>
     <div class="save-form-row">
       <input class="save-name-input" type="text" id="saveName" placeholder="اسم المشروع أو المقترح (مثال: مشروع صحة الأمهات 2025)" maxlength="80"
         onkeydown="if(event.key==='Enter')saveBudget()"/>
-      <button class="btn btn-save" onclick="saveBudget()">💾 حفظ</button>
+      <button class="btn btn-save" onclick="saveBudget()"><svg class="ico"><use href="#i-save"/></svg> حفظ</button>
     </div>
     <div class="saved-list" id="savedList">
       <div class="empty-saves">لا توجد ميزانيات محفوظة بعد</div>
@@ -528,11 +573,11 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 
   <!-- Actions -->
   <div class="actions-bar">
-    <button class="btn btn-danger" onclick="resetAll()">🗑️ إعادة تعيين</button>
-    <button class="btn btn-outline" onclick="openFromFile()">📂 فتح ملف</button>
-    <button class="btn btn-outline" onclick="saveToFile()">💾 حفظ كملف</button>
-    <button class="btn btn-outline" onclick="exportExcel()">📊 تصدير Excel</button>
-    <button class="btn btn-outline" onclick="exportPDFNative()">🖨️ تصدير PDF</button>
+    <button class="btn btn-danger" onclick="resetAll()"><svg class="ico"><use href="#i-trash"/></svg> إعادة تعيين</button>
+    <button class="btn btn-outline" onclick="openFromFile()"><svg class="ico"><use href="#i-folder"/></svg> فتح ملف</button>
+    <button class="btn btn-outline" onclick="saveToFile()"><svg class="ico"><use href="#i-download"/></svg> حفظ كملف</button>
+    <button class="btn btn-outline" onclick="exportExcel()"><svg class="ico"><use href="#i-sheet"/></svg> تصدير Excel</button>
+    <button class="btn btn-outline" onclick="exportPDFNative()"><svg class="ico"><use href="#i-printer"/></svg> تصدير PDF</button>
   </div>
 
 </div>
@@ -559,6 +604,7 @@ tbody tr:hover td{background:rgba(0,0,0,.015)}
 let items = [];
 let idCounter = 0;
 let calcMode = 'per-item'; // 'per-item' | 'on-total'
+const DASH = '<span class="muted-dash">—</span>'; // calm placeholder for not-yet-computed values
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTableHeader();
@@ -670,7 +716,7 @@ function switchPageTab(name) {
 function toggleTheme() {
   const h = document.documentElement;
   h.setAttribute('data-theme', h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-  document.querySelector('.theme-btn').textContent = h.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+  document.getElementById('themeToggle').textContent = h.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
 }
 
 // ─── Rates ────────────────────────────────────────────────────────────────────
@@ -794,8 +840,8 @@ function recalcBudget() {
   const rates = getRates();
   const kwd = parseFloat(document.getElementById('budgetKwd').value);
   if (isNaN(kwd) || kwd <= 0) {
-    document.getElementById('budgetUsd').textContent = '—';
-    document.getElementById('budgetNis').textContent = '—';
+    document.getElementById('budgetUsd').innerHTML = DASH;
+    document.getElementById('budgetNis').innerHTML = DASH;
     return;
   }
   const usd = kwd * rates.kwdUsd;
@@ -803,7 +849,7 @@ function recalcBudget() {
   if (rates.usdNis > 0) {
     document.getElementById('budgetNis').textContent = fmt(usd * rates.usdNis, 2);
   } else {
-    document.getElementById('budgetNis').textContent = '—';
+    document.getElementById('budgetNis').innerHTML = DASH;
   }
   renderSummary(rates);
 }
@@ -944,37 +990,37 @@ function renderFoot(rates) {
     document.getElementById('itemsFoot').innerHTML = `
       <tr style="font-size:11px;color:var(--text2)">
         <td colspan="3" style="text-align:right;padding-right:12px">مجموع البنود (قبل Admin%)</td>
-        <td class="cell-nis">${subNis > 0 ? fmt(subNis, 2) : '—'}</td>
-        <td class="cell-usd">${subUsd !== null ? fmt(subUsd, 2) : '—'}</td>
-        <td class="cell-kwd">${subKwd !== null ? fmt(subKwd, 2) : '—'}</td>
+        <td class="cell-nis">${subNis > 0 ? fmt(subNis, 2) : DASH}</td>
+        <td class="cell-usd">${subUsd !== null ? fmt(subUsd, 2) : DASH}</td>
+        <td class="cell-kwd">${subKwd !== null ? fmt(subKwd, 2) : DASH}</td>
         <td></td>
       </tr>
       ${rates.wafaaAdminPct > 0 ? `<tr style="font-size:11px;color:var(--green)">
         <td colspan="3" style="text-align:right;padding-right:12px">+ Admin% وافا (${rates.wafaaAdminPct}%)</td>
         <td style="color:var(--green);font-weight:700">${fmt(wafaaNis, 2)}</td>
-        <td style="color:var(--green)">${wafaaUsd !== null ? fmt(wafaaUsd, 2) : '—'}</td>
-        <td style="color:var(--green)">${wafaaKwd !== null ? fmt(wafaaKwd, 2) : '—'}</td>
+        <td style="color:var(--green)">${wafaaUsd !== null ? fmt(wafaaUsd, 2) : DASH}</td>
+        <td style="color:var(--green)">${wafaaKwd !== null ? fmt(wafaaKwd, 2) : DASH}</td>
         <td></td>
       </tr>` : ''}
       ${rates.donorAdminPct > 0 ? `<tr style="font-size:11px;color:var(--purple)">
         <td colspan="3" style="text-align:right;padding-right:12px">+ Admin% المانحون (${rates.donorAdminPct}%)</td>
         <td style="color:var(--purple);font-weight:700">${fmt(donorNis, 2)}</td>
-        <td style="color:var(--purple)">${donorUsd !== null ? fmt(donorUsd, 2) : '—'}</td>
-        <td style="color:var(--purple)">${donorKwd !== null ? fmt(donorKwd, 2) : '—'}</td>
+        <td style="color:var(--purple)">${donorUsd !== null ? fmt(donorUsd, 2) : DASH}</td>
+        <td style="color:var(--purple)">${donorKwd !== null ? fmt(donorKwd, 2) : DASH}</td>
         <td></td>
       </tr>` : ''}
       ${fixed > 0 ? `<tr style="font-size:11px;color:var(--amber)">
         <td colspan="3" style="text-align:right;padding-right:12px">+ تكاليف إضافية (مرة واحدة)</td>
         <td>${fmt(fixed, 2)} NIS</td>
-        <td>${fixedUsd !== null ? fmt(fixedUsd, 2) : '—'}</td>
-        <td>${fixedKwd !== null ? fmt(fixedKwd, 2) : '—'}</td>
+        <td>${fixedUsd !== null ? fmt(fixedUsd, 2) : DASH}</td>
+        <td>${fixedKwd !== null ? fmt(fixedKwd, 2) : DASH}</td>
         <td></td>
       </tr>` : ''}
       <tr class="totals-row">
         <td colspan="3" style="text-align:right;font-size:13px">المجموع الكلي</td>
-        <td class="cell-nis" id="foot-nis">${grandNis > 0 ? fmt(grandNis, 2) : '—'}</td>
-        <td class="cell-usd" id="foot-usd">${grandUsd !== null ? fmt(grandUsd, 2) : '—'}</td>
-        <td class="cell-kwd" id="foot-kwd">${grandKwd !== null ? fmt(grandKwd, 2) : '—'}</td>
+        <td class="cell-nis" id="foot-nis">${grandNis > 0 ? fmt(grandNis, 2) : DASH}</td>
+        <td class="cell-usd" id="foot-usd">${grandUsd !== null ? fmt(grandUsd, 2) : DASH}</td>
+        <td class="cell-kwd" id="foot-kwd">${grandKwd !== null ? fmt(grandKwd, 2) : DASH}</td>
         <td></td>
       </tr>`;
   } else {
@@ -994,23 +1040,23 @@ function renderFoot(rates) {
     document.getElementById('itemsFoot').innerHTML = `
       ${fixed > 0 ? `<tr style="font-size:11px;color:var(--text2)">
         <td colspan="5" style="text-align:right;padding-right:12px">مجموع البنود</td>
-        <td class="cell-nis">${totals.nis > 0 ? fmt(totals.nis, 2) : '—'}</td>
-        <td class="cell-usd">${totals.hasUsd ? fmt(totals.usd, 2) : '—'}</td>
-        <td class="cell-kwd">${totals.hasKwd ? fmt(totals.kwd, 2) : '—'}</td>
+        <td class="cell-nis">${totals.nis > 0 ? fmt(totals.nis, 2) : DASH}</td>
+        <td class="cell-usd">${totals.hasUsd ? fmt(totals.usd, 2) : DASH}</td>
+        <td class="cell-kwd">${totals.hasKwd ? fmt(totals.kwd, 2) : DASH}</td>
         <td></td>
       </tr>
       <tr style="font-size:11px;color:var(--amber)">
         <td colspan="5" style="text-align:right;padding-right:12px">+ تكاليف إضافية (مرة واحدة)</td>
         <td>${fmt(fixed, 2)} NIS</td>
-        <td>${fixedUsd !== null ? fmt(fixedUsd, 2) : '—'}</td>
-        <td>${fixedKwd !== null ? fmt(fixedKwd, 2) : '—'}</td>
+        <td>${fixedUsd !== null ? fmt(fixedUsd, 2) : DASH}</td>
+        <td>${fixedKwd !== null ? fmt(fixedKwd, 2) : DASH}</td>
         <td></td>
       </tr>` : ''}
       <tr class="totals-row">
         <td colspan="5" style="text-align:right;font-size:13px">المجموع الكلي</td>
-        <td class="cell-nis" id="foot-nis">${grandNis > 0 ? fmt(grandNis, 2) : '—'}</td>
-        <td class="cell-usd" id="foot-usd">${grandUsd !== null ? fmt(grandUsd, 2) : '—'}</td>
-        <td class="cell-kwd" id="foot-kwd">${grandKwd !== null ? fmt(grandKwd, 2) : '—'}</td>
+        <td class="cell-nis" id="foot-nis">${grandNis > 0 ? fmt(grandNis, 2) : DASH}</td>
+        <td class="cell-usd" id="foot-usd">${grandUsd !== null ? fmt(grandUsd, 2) : DASH}</td>
+        <td class="cell-kwd" id="foot-kwd">${grandKwd !== null ? fmt(grandKwd, 2) : DASH}</td>
         <td></td>
       </tr>`;
   }
@@ -1075,20 +1121,20 @@ function renderSummary(rates) {
 
   strip.innerHTML = `
     <div class="sum-box nis">
-      <div class="sum-val">${totalNis > 0 ? fmt(totalNis, 2) : '—'}</div>
+      <div class="sum-val">${totalNis > 0 ? fmt(totalNis, 2) : DASH}</div>
       <div class="sum-label">إجمالي البنود (NIS)</div>
     </div>
     <div class="sum-box usd">
-      <div class="sum-val">${hasUsd ? fmt(totalUsd, 2) : '—'}</div>
+      <div class="sum-val">${hasUsd ? fmt(totalUsd, 2) : DASH}</div>
       <div class="sum-label">إجمالي البنود (USD)</div>
     </div>
     <div class="sum-box kwd">
-      <div class="sum-val">${hasKwd ? fmt(totalKwd, 2) : '—'}</div>
+      <div class="sum-val">${hasKwd ? fmt(totalKwd, 2) : DASH}</div>
       <div class="sum-label">إجمالي البنود (KWD)</div>
     </div>
     ${budgetKwd > 0 ? `
     <div class="sum-box remaining ${overClass}">
-      <div class="sum-val">${hasKwd ? fmt(remainKwd, 2) : '—'}</div>
+      <div class="sum-val">${hasKwd ? fmt(remainKwd, 2) : DASH}</div>
       <div class="sum-label">${remainKwd !== null && remainKwd < 0 ? '⚠️ يتجاوز الميزانية (KWD)' : 'المتبقي من الميزانية (KWD)'}</div>
     </div>` : ''}
   `;
@@ -1220,8 +1266,8 @@ function exportExcel() {
   const grandRow = `<tr>
     <td ${spanLeft} style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:right">المجموع الكلي / Grand Total</td>
     <td style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:center">${n(grandNis)}</td>
-    <td style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:center">${grandUsd > 0 ? n(grandUsd) : '—'}</td>
-    <td style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:center">${grandKwd > 0 ? n(grandKwd) : '—'}</td>
+    <td style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:center">${grandUsd > 0 ? n(grandUsd) : DASH}</td>
+    <td style="border:1px solid #0f5132;padding:9px 11px;background:#166534;color:#fff;font-weight:bold;font-size:13px;text-align:center">${grandKwd > 0 ? n(grandKwd) : DASH}</td>
   </tr>`;
 
   // ── Budget summary table ─────────────────────────────────────────────────────
@@ -1235,10 +1281,10 @@ function exportExcel() {
       <tr><th colspan="2" style="background:#166534;color:#fff;padding:9px 14px;font-size:13px;border:1px solid #0f5132;text-align:right">ملخص الميزانية / Budget Summary</th></tr>
       <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:#f0fdf4;font-weight:600">الميزانية الكلية (KWD)</td><td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;color:#5b21b6;font-weight:700">${n(budgetKwd)}</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:#f0fdf4;font-weight:600">الميزانية الكلية (USD)</td><td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;color:#1a56db">${n(budgetUsd)}</td></tr>
-      <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:#f0fdf4;font-weight:600">الميزانية الكلية (NIS)</td><td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;color:#15803d">${budgetNis > 0 ? n(budgetNis) : '—'}</td></tr>
+      <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:#f0fdf4;font-weight:600">الميزانية الكلية (NIS)</td><td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;color:#15803d">${budgetNis > 0 ? n(budgetNis) : DASH}</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:#f0fdf4;font-weight:600">إجمالي البنود (KWD)</td><td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;color:#5b21b6;font-weight:700">${n(grandKwd)}</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:7px 11px;background:${remainKwd < 0 ? '#fee2e2' : '#f0fdf4'};font-weight:700">${remainKwd < 0 ? '⚠ تجاوز الميزانية' : 'المتبقي (KWD)'}</td>
-          <td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;font-weight:700;color:${remainKwd < 0 ? '#991b1b' : '#15803d'}">${remainKwd !== null ? n(remainKwd) : '—'}</td></tr>
+          <td style="border:1px solid #d1d5db;padding:7px 11px;text-align:center;font-weight:700;color:${remainKwd < 0 ? '#991b1b' : '#15803d'}">${remainKwd !== null ? n(remainKwd) : DASH}</td></tr>
     </table>` : '';
 
   // ── Rates info table ─────────────────────────────────────────────────────────
@@ -1247,7 +1293,7 @@ function exportExcel() {
     <table dir="rtl" style="border-collapse:collapse;width:420px;font-family:Arial,sans-serif">
       <tr><th colspan="2" style="background:#374151;color:#fff;padding:9px 14px;font-size:13px;border:1px solid #1f2937;text-align:right">الإعدادات المستخدمة / Settings Used</th></tr>
       <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">سعر KWD/USD</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center">1 KWD = ${rates.kwdUsd} USD</td></tr>
-      <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">سعر USD/NIS</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center">${rates.usdNis > 0 ? `1 USD = ${rates.usdNis} NIS` : '—'}</td></tr>
+      <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">سعر USD/NIS</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center">${rates.usdNis > 0 ? `1 USD = ${rates.usdNis} NIS` : DASH}</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">Admin% وافا</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center;color:#15803d;font-weight:600">${rates.wafaaAdminPct}%</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">Admin% المانحون</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center;color:#5b21b6;font-weight:600">${rates.donorAdminPct}%</td></tr>
       <tr><td style="border:1px solid #d1d5db;padding:6px 11px;background:#f9fafb">Admin% الإجمالي</td><td style="border:1px solid #d1d5db;padding:6px 11px;text-align:center;font-weight:700">${rates.adminPct}%</td></tr>
@@ -1433,7 +1479,7 @@ function renderSavesList() {
         <div class="saved-item-name">${esc(s.name)}</div>
         <div class="saved-item-meta">${dateStr} · ${timeStr} &nbsp;|&nbsp; ${itemCount} بند &nbsp;|&nbsp; ميزانية: ${budget}</div>
       </div>
-      <button class="btn-load" onclick="loadBudget(${i})">📂 تحميل</button>
+      <button class="btn-load" onclick="loadBudget(${i})"><svg class="ico" style="width:13px;height:13px"><use href="#i-folder"/></svg> تحميل</button>
       <button class="btn-del-save" onclick="deleteSave(${i},event)" title="حذف">✕</button>
     </div>`;
   }).join('');
